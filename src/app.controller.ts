@@ -1,6 +1,6 @@
-import { Controller, Get, Res } from '@nestjs/common';
-import { Response } from 'express';
-import { AppService } from './app.service';
+import { Controller, Get, Res } from "@nestjs/common";
+import { Response } from "express";
+import { AppService } from "./app.service";
 
 @Controller()
 export class AppController {
@@ -8,11 +8,16 @@ export class AppController {
 
   @Get()
   getHello(): string {
-    return this.appService.getHello();
+    return this.appService.homepage();
   }
 
-  @Get('generate-qrcode')
+  @Get("generate-qrcode")
   generateQrcode(@Res() response: Response) {
     return this.appService.generateQrcode(response);
+  }
+
+  @Get("movie-list")
+  async generateMovieList() {
+    return await this.appService.movieList();
   }
 }
