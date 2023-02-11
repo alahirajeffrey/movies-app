@@ -15,7 +15,7 @@ export class MovieService {
     try {
       return await this.prisma.movie.findMany({ where: { title: title } });
     } catch (error) {
-      return error.message;
+      return error;
     }
   }
 
@@ -26,9 +26,9 @@ export class MovieService {
    */
   async getMovieById(id: string): Promise<Movie> {
     try {
-      return await this.prisma.movie.findFirst({ where: { id: id } });
+      return await this.prisma.movie.findFirstOrThrow({ where: { id: id } });
     } catch (error) {
-      return error.message;
+      return error;
     }
   }
 
@@ -51,7 +51,7 @@ export class MovieService {
         },
       });
     } catch (error) {
-      return error.message;
+      return error;
     }
   }
 }
