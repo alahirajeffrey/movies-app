@@ -1,9 +1,18 @@
 ## Description
+
 Yoke marketing backend software developer task
 
 ## Major Task Details
+
 - Generate a QR code that will give a user link to the page with a list of 10 movies.
 - QR code must be regenerated every 10 seconds and return a new link to another 10 random movies.
+
+## Implementation
+
+- The generateMovieList controller calls the movieList service which a cron job calls every 30 seconds as opposed to the 10 seconds stipulated in the task ( this is limit the number of requests sent to the external api where the movie list is being gotten from is not)
+- The generateQrCode controller calls the generateQrCode service which generates a qr code using route to get movie list
+- The list of movies which is gotten upon scanning the qrcode thus changes  every 30 seconds.
+- The movies are then saved to a postgres database using prisma as an ORM upon being fetched
 
 ## Requirements
 
@@ -46,6 +55,7 @@ $ npm run test:cov
 ```
 
 ## API Endpoints
+
 | HTTP Verbs | Endpoints | Action | Required |
 | --- | --- | --- | --- |
 | GET | https://yoke-marketing-movie-app.onrender.com/api/v1 | return homepage| |
@@ -55,11 +65,14 @@ $ npm run test:cov
 | GET | https://yoke-marketing-movie-app.onrender.com/api/v1/movie/:id | get a movie by id | params.id |
 
 ## How to use
+
 - Navigate to the endpoint to generate the qrcode 
 ```
 https://yoke-marketing-movie-app.onrender.com/api/v1/generate-qrcode
 ```
 - scan qrcode to get a list of movies
+- rescan after 30 seconds to get a new list of movies
+
 ### Developer
 
 [Alahira Jeffrey](https://github.com/alahirajeffrey)
