@@ -67,7 +67,7 @@ export class AppService {
 
       return partialResultList;
     } catch (error: any) {
-      console.log(error.message);
+      console.log(error);
     }
   }
 
@@ -90,7 +90,7 @@ export class AppService {
           return error;
         });
     } catch (error: any) {
-      console.log(error.message);
+      console.log(error);
     }
   }
 }
