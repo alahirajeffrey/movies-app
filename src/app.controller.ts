@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Res } from "@nestjs/common";
+import { Controller, Get, Param, Res } from "@nestjs/common";
 import { Response } from "express";
 import { AppService } from "./app.service";
 import { MovieService } from "./movie.service";

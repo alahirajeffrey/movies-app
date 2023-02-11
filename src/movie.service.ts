@@ -1,6 +1,5 @@
 import { Injectable } from "@nestjs/common";
 import { Movie } from "@prisma/client";
-import { saveMovieDto } from "./dto/saveMovie.dto";
 import { PrismaService } from "./prisma.service";
 
 @Injectable()
