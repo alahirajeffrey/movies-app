@@ -27,7 +27,7 @@ export class AppController {
 
   @Get("movie/title/:title")
   async getMovieByTitle(@Param("title") title: string) {
-    return await this.movieService.getMovieById(title);
+    return await this.movieService.getMovieByTitle(title);
   }
 
   @Get("movie/:id")
