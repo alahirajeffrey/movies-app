@@ -14,7 +14,7 @@ export class AppService {
   ) {}
 
   /**
-   *
+   * returns homepage
    * @returns string
    */
   homepage(): string {
@@ -33,8 +33,8 @@ export class AppService {
    * get list of movies from external api every 10 seconds
    * @returns result: Array
    */
-  @Cron(CronExpression.EVERY_10_SECONDS)
-  async movieList() {
+  @Cron(CronExpression.EVERY_30_SECONDS)
+  async movieList(): Promise<Array<any>> {
     try {
       const API_URL = this.configService.get<string>("API_URL");
       const API_KEY = this.configService.get<string>("API_KEY");
@@ -47,9 +47,10 @@ export class AppService {
         this.httpService.get(`${API_URL}?api_key=${API_KEY}&page=${moviePage}`),
       );
 
-      // return result from get request
+      // return first 10 objects from get request
       const completeResultList: Array<any> = result.data.results;
       const partialResultList: Array<any> = completeResultList.slice(0, 10);
+
       return partialResultList;
     } catch (error: any) {
       console.log(error.message);
@@ -71,7 +72,7 @@ export class AppService {
         .then((url) => {
           return qrcode.toFileStream(stream, URL);
         })
-        .then((error) => {
+        .then((error: any) => {
           return error;
         });
     } catch (error: any) {
