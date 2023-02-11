@@ -5,12 +5,14 @@ import { ConfigService } from "@nestjs/config";
 import { HttpService } from "@nestjs/axios/dist";
 import { lastValueFrom } from "rxjs";
 import { Cron, CronExpression } from "@nestjs/schedule/dist";
+import { MovieService } from "./movie.service";
 
 @Injectable()
 export class AppService {
   constructor(
     private configService: ConfigService,
     private readonly httpService: HttpService,
+    private readonly movieService: MovieService,
   ) {}
 
   /**
@@ -50,6 +52,18 @@ export class AppService {
       // return first 10 objects from get request
       const completeResultList: Array<any> = result.data.results;
       const partialResultList: Array<any> = completeResultList.slice(0, 10);
+
+      // loop through result and get individual movie objects
+      for (let i = 0; i <= partialResultList.length - 1; i++) {
+        const movie = partialResultList[i];
+
+        //save movie to db
+        await this.movieService.saveMovieToDb(
+          movie.title,
+          movie.overview,
+          movie.poster_path,
+        );
+      }
 
       return partialResultList;
     } catch (error: any) {
