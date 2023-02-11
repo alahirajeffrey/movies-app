@@ -1,3 +1,10 @@
+## Description
+Yoke marketing backend software developer task
+
+## Major Task Details
+- Generate a QR code that will give a user link to the page with a list of 10 movies.
+- QR code must be regenerated every 10 seconds and return a new link to another 10 random movies.
+
 ## Requirements
 
 - [Nodejs](https://nodejs.org/en/) is a JavaScript runtime built on Chrome's V8 JavaScript engine.
@@ -39,14 +46,14 @@ $ npm run test:cov
 ## API Endpoints
 | HTTP Verbs | Endpoints | Action | Required |
 | --- | --- | --- | --- |
-| GET | localhost:3000/api/v1 | return homepage| |
-| GET | localhost:3000/api/v1/generate-qrcode | generate qrcode containing link with movies| |
-| GET | localhost:3000/api/v1/movie-list | get a list of 10 movies every 10 seconds| |
+| GET | https://yoke-marketing-movie-app.onrender.com/api/v1 | return homepage| |
+| GET | https://yoke-marketing-movie-app.onrender.com/api/v1/generate-qrcode | generate qrcode containing link with movies| |
+| GET | https://yoke-marketing-movie-app.onrender.com/api/v1/movie-list | get a list of 10 movies every 10 seconds| |
 
 ## How to use
 - Navigate to the endpoint to generate the qrcode 
 ```
-localhost:3000/api/v1/generate-qrcode
+https://yoke-marketing-movie-app.onrender.com/api/v1/generate-qrcode
 ```
 - scan qrcode to get a list of movies
 ### Developer
