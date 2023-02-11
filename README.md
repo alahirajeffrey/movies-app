@@ -9,9 +9,9 @@ Yoke marketing backend software developer task
 
 ## Implementation
 
-- The generateMovieList controller calls the movieList service which a cron job calls every 30 seconds as opposed to the 10 seconds stipulated in the task ( this is limit the number of requests sent to the external api where the movie list is being gotten from is not)
+- The generateMovieList controller calls the movieList service which runs as a cron job every 30 seconds as opposed to the 10 seconds stipulated in the task ( this is to limit the number of requests sent to the external api where the movie list is being gotten from )
 - The generateQrCode controller calls the generateQrCode service which generates a qr code using route to get movie list
-- The list of movies which is gotten upon scanning the qrcode thus changes  every 30 seconds.
+- The list of movies which is gotten upon scanning the qrcode thus changes every 30 seconds.
 - The movies are then saved to a postgres database using prisma as an ORM upon being fetched
 
 ## Requirements
