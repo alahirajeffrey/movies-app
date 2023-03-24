@@ -1,7 +1,7 @@
 import { Controller, Get, Param, Res } from "@nestjs/common";
 import { Response } from "express";
-import { AppService } from "./app.service";
-import { MovieService } from "./movie.service";
+import { AppService } from "../services/app.service";
+import { MovieService } from "../services/movie.service";
 
 @Controller()
 export class AppController {
